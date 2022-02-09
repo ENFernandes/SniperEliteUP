@@ -2,22 +2,16 @@ package org.academiadecodigo.argicultores;
 
 abstract class Enemy extends GameObject implements Destroyable{
     private int health = 100;
-    private boolean isDead = false;
 
-    public boolean isDead() {
-        return isDead;
-    }
 
     public void hit(int hit) {
         this.health -= hit;
-        if (health < 0) {
-            isDead = true;
-        }
+
     }
 
     @Override
     String getMessage() {
-        if (!isDead) {
+        if (!isDestroyed()) {
             return "Batata com " + health + " Vida ";
         }
         return "";
@@ -25,6 +19,9 @@ abstract class Enemy extends GameObject implements Destroyable{
 
     @Override
     public boolean isDestroyed() {
-        return true;
+        if (health <= 0) {
+            return true;
+        }
+        return false;
     }
 }
