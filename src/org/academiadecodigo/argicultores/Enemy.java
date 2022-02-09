@@ -1,6 +1,6 @@
 package org.academiadecodigo.argicultores;
 
-abstract class Enemy extends GameObject {
+abstract class Enemy extends GameObject implements Destroyable{
     private int health = 100;
     private boolean isDead = false;
 
@@ -22,5 +22,10 @@ abstract class Enemy extends GameObject {
             return "Batata com " + health + " Vida ";
         }
         return "\nBatata == Puré";
+    }
+
+    @Override
+    public boolean isDestroyed() {
+        return true;
     }
 }

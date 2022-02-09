@@ -12,11 +12,14 @@ public class Game {
 
     public void start() {
         for (GameObject gO : gameObject) {
-            if (gO instanceof Enemy) {
+            if (gO instanceof Enemy || gO instanceof Barrel ) {
+                Destroyable destroyable = ((Destroyable) gO);
                 Enemy enemy = (Enemy) gO;
-                while (!enemy.isDead()) {
-                    sniperRifle.shoot(enemy);
+                while (!enemy.isDead() || !destroyable.isDestroyed()) {
+                    sniperRifle.shoot(destroyable);
+                    if(gO instanceof Enemy)
                     System.out.println(enemy.getMessage());
+                    else
                     shotsFired++;
                 }
                 System.out.println(gO.getMessage() + " com " + shotsFired + " tiros");
@@ -29,13 +32,15 @@ public class Game {
     public GameObject[] createObjects(int size) {
         GameObject[] objects = new GameObject[size];
         for (int i = 0; i < objects.length; i++) {
-            int rand = (int) Math.round(Math.random() * 10);
+            int rand = (int) Math.round(Math.random() * 15);
             if (rand < 3) {
                 objects[i] = new Tree();
             } else if (rand > 3 && rand < 6) {
                 objects[i] = new ArmouredEnemy();
-            } else {
+            } else if (rand > 6 && rand < 11) {
                 objects[i] = new SoldierEnemy();
+            } else {
+                objects[i] = new Barrel();
             }
         }
         return objects;

@@ -12,4 +12,9 @@ public class ArmouredEnemy extends Enemy {
         }
     }
 
+    @Override
+    public boolean isDestroyed() {
+        return true;
+    }
+
 }

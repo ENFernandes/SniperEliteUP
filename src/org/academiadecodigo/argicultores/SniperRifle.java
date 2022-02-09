@@ -1,11 +1,11 @@
 package org.academiadecodigo.argicultores;
 
 public class SniperRifle {
-    private int bulletDamage = 40;
+    private int bulletDamage = (int)Math.round(Math.random()*100);
 
-    public void shoot(Enemy gO) {
+    public void shoot(Destroyable destroyable) {
 
-        gO.hit(bulletDamage);
+        destroyable.hit(bulletDamage);
 
     }
 
