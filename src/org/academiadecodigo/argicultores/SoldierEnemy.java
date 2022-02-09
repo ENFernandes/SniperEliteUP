@@ -4,6 +4,6 @@ public class SoldierEnemy extends Enemy{
 
     @Override
     public boolean isDestroyed() {
-        return false;
+        return true;
     }
 }

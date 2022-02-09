@@ -4,7 +4,6 @@ abstract class Enemy extends GameObject implements Destroyable{
     private int health = 100;
     private boolean isDead = false;
 
-
     public boolean isDead() {
         return isDead;
     }
@@ -21,7 +20,7 @@ abstract class Enemy extends GameObject implements Destroyable{
         if (!isDead) {
             return "Batata com " + health + " Vida ";
         }
-        return "\nBatata == Puré";
+        return "";
     }
 
     @Override
